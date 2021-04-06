@@ -31,4 +31,9 @@ public class Team {
     @JoinColumn(name = "trainer" )
     @JsonBackReference
     private Trainer trainer;
+    @Schema(description = "Pokemon inb the team", example = "Pikachu", required = true)
+    @ManyToOne
+    @JoinColumn(name = "pokemon" )
+    @JsonBackReference
+    private Pokemon pokemon;
 }
