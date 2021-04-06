@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Slf4j
 @ToString
-@Entity
+@Entity(name = "game")
 public class Game {
     @Schema(description = "game identifier", example = "1", required = true)
     @Id

@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Slf4j
 @NoArgsConstructor
 @ToString
-@Entity
+@Entity(name = "team")
 public class Team {
     @Schema(description = "team identifier", example = "1", required = true)
     @Id

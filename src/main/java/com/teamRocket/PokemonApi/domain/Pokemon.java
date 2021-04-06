@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Slf4j
 @ToString
-@Entity
+@Entity(name = "pokemon")
 public class Pokemon {
     @Schema(description = "Pokemon identifier", example = "1", required = true)
     @Id
@@ -38,7 +38,7 @@ public class Pokemon {
     private boolean evolution;
     @Schema(description = "Game were the Pokemon appear for the first time", example = "Pokemon gold", required = true)
     @ManyToOne
-    @JoinColumn(name = "game" )
+    @JoinColumn(name = "game")
     @JsonBackReference
     private Game game;
     @Schema(description = "URL with a image of that Pokemon", example = "https://www.pokeapi.com/pikachu.png", required = true)

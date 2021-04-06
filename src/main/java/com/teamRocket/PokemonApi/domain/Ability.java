@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Slf4j
 @ToString
-@Entity
+@Entity(name = "ability")
 public class Ability {
     @Schema(description = "ability identifier", example = "1", required = true)
     @Id

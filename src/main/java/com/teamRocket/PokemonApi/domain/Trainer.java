@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 @NoArgsConstructor
 @ToString
-@Entity
+@Entity(name = "trainer")
 public class Trainer {
     @Schema(description = "trainer identifier", example = "1", required = true)
     @Id
