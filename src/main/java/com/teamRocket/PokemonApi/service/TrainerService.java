@@ -1,6 +1,5 @@
 package com.teamRocket.PokemonApi.service;
 
-import com.teamRocket.PokemonApi.domain.Team;
 import com.teamRocket.PokemonApi.domain.Trainer;
 
 import java.util.List;

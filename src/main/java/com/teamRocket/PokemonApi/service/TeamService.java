@@ -27,3 +27,4 @@ public interface TeamService {
     //modify team
     Team modifyTeam(long id, Team newTeam);
 }
+

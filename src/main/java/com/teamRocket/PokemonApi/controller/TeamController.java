@@ -98,7 +98,6 @@ public class TeamController {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
-
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
