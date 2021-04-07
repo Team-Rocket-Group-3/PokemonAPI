@@ -3,6 +3,7 @@ package com.teamRocket.PokemonApi.controller;
 import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.domain.Team;
 import com.teamRocket.PokemonApi.domain.Trainer;
+import com.teamRocket.PokemonApi.exception.TeamNotFoundException;
 import com.teamRocket.PokemonApi.service.TeamService;
 import com.teamRocket.PokemonApi.support.Response;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,10 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @version Curso 2020-2021
@@ -55,6 +53,25 @@ public class TeamController {
         Team team = teamService.addPokemon(id, pokemon);
         log.info("End addPokemon");
         return new ResponseEntity<>(team, HttpStatus.CREATED);
+    }
+
+    @ExceptionHandler(TeamNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Response> handleTeamNotFoundException(TeamNotFoundException tnfe) {
+        Response response = Response.errorResponse(Response.ERROR_NOT_FOUND, tnfe.getMessage());
+        log.error(tnfe.getMessage(), tnfe);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+
+    @ExceptionHandler
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Response> handleException(Exception exception) {
+        Response response = Response.errorResponse(500, "Unexpected error. Please, contact with the administrator");
+        log.error(exception.getMessage(), exception);
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

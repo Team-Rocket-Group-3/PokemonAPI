@@ -48,9 +48,9 @@ public class PokemonController {
     @ExceptionHandler(PokemonNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Response> handlePokemonNotFoundException(PokemonNotFoundException fnfe) {
-        Response response = Response.errorResponse(Response.ERROR_NOT_FOUND, fnfe.getMessage());
-        log.error(fnfe.getMessage(), fnfe);
+    public ResponseEntity<Response> handlePokemonNotFoundException(PokemonNotFoundException pnfe) {
+        Response response = Response.errorResponse(Response.ERROR_NOT_FOUND, pnfe.getMessage());
+        log.error(pnfe.getMessage(), pnfe);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
@@ -59,7 +59,7 @@ public class PokemonController {
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<Response> handleException(Exception exception) {
-        Response response = Response.errorResponse(500, "Error inesperado. Contacte con el administrador");
+        Response response = Response.errorResponse(500, "Unexpected error. Please, contact with the administrator");
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
