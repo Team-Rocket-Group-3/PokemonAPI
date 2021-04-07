@@ -43,5 +43,9 @@ public class Team {
     @JoinTable(name = "teams_Pokemon",
             joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "pokemon_id", referencedColumnName = "id"))
-    private List<Pokemon> pokemonTeam;
+    private List<Pokemon> pokemons;
+
+    public void addPokemon(Pokemon pokemon){
+        pokemons.add(pokemon);
+    }
 }

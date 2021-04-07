@@ -54,7 +54,7 @@ public class Pokemon {
     private List<Ability> abilities;
 
     @Schema(description = "Team of pokemon", example = "team aqua", required = true)
-    @ManyToMany(mappedBy = "pokemonTeam")
+    @ManyToMany(mappedBy = "pokemons")
     @JsonBackReference (value="get-team")
     private List<Team> teams;
 
