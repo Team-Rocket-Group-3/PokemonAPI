@@ -55,23 +55,37 @@ public class TeamController {
         return new ResponseEntity<>(team, HttpStatus.CREATED);
     }
 
-    @ExceptionHandler(TeamNotFoundException.class)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Response> handleTeamNotFoundException(TeamNotFoundException tnfe) {
-        Response response = Response.errorResponse(Response.ERROR_NOT_FOUND, tnfe.getMessage());
-        log.error(tnfe.getMessage(), tnfe);
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    @Operation(summary = "detele team") // Descripción de la operación
+    @ApiResponses(value = { // Possible answers
+            @ApiResponse(responseCode = "201", description = "Team was added", content = @Content(schema = @Schema(implementation = Team.class)))
+    })
+    @DeleteMapping(value = "team/{id}")
+    public ResponseEntity<Response> deleteTeam(@PathVariable long id) {
+        log.info("init delete team");
+        try {
+            teamService.deleteTeam(id);
+        } catch (TeamNotFoundException ex) {
+            log.error(ex.getMessage());
+            return new ResponseEntity<>(Response.errorResponse(Response.NOT_FOUND, "Team not found"), HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 
-
-    @ExceptionHandler
-    @ResponseBody
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<Response> handleException(Exception exception) {
-        Response response = Response.errorResponse(500, "Unexpected error. Please, contact with the administrator");
-        log.error(exception.getMessage(), exception);
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    @Operation(summary = "Modify a team")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Team modified", content = @Content(schema = @Schema(implementation = Team.class))),
+            @ApiResponse(responseCode = "204", description = "The team does not exist", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PutMapping("/team/{id}")
+    public ResponseEntity<Team> modifyTeam(@PathVariable long id, @RequestBody Team newTeam) {
+        log.info("init modifyTeam");
+        Team team;
+        try {
+            team = teamService.modifyTeam(id, newTeam);
+        } catch (TeamNotFoundException ex) {
+            log.error(ex.getMessage());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(team, HttpStatus.OK);
     }
-
 }
