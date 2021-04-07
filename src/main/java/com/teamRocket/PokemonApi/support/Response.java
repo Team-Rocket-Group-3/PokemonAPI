@@ -12,6 +12,7 @@ public class Response {
     public static final int NOT_FOUND = 404;
     public static  final int OK = 200;
     public static final String NO_MESSAGE = "";
+    public static final int ERROR_NOT_FOUND = 101;
 
     private Error error;
 

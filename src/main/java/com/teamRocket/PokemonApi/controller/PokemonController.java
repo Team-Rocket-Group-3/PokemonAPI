@@ -3,6 +3,7 @@ package com.teamRocket.PokemonApi.controller;
 import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.exception.PokemonNotFoundException;
 import com.teamRocket.PokemonApi.service.PokemonService;
+import com.teamRocket.PokemonApi.support.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
