@@ -1,7 +1,6 @@
 package com.teamRocket.PokemonApi.exception;
 
 /**
- * Excepción de Team no encontrado
  * @version Curso 2020-2021
  * @author: veronica
  */
