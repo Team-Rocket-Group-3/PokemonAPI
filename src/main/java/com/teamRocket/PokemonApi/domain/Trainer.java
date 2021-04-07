@@ -14,7 +14,6 @@ import java.util.List;
  * @author: Guillermo
  */
 @Data
-@Slf4j
 @NoArgsConstructor
 @ToString
 @Entity(name = "trainer")
@@ -23,13 +22,16 @@ public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Schema(description = "trainer name", example = "Zelda Ruiz", required = true)
     @Column
     private String name;
+
     @Schema(description = "Register date", example = "2016/06/04", required = true)
     @Column
     private LocalDate registerDate;
-    @Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
+
+    /*@Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
     @OneToMany(mappedBy = "trainer",cascade = CascadeType.ALL)
-    private List<Team> pokemonTeam;
+    private List<Team> pokemonTeam;*/
 }

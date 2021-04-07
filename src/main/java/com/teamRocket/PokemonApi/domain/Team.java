@@ -15,7 +15,6 @@ import java.util.List;
  * @author: Guillermo
  */
 @Data
-@Slf4j
 @NoArgsConstructor
 @ToString
 @Entity(name = "team")
@@ -24,17 +23,21 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Schema(description = "team name", example = "Team aqua", required = true)
     @Column
     private String name;
+
     @Schema(description = "creation date", example = "2016/06/04", required = true)
     @Column
     private LocalDate creationDate;
+
     @Schema(description = "Trainer which has the team", example = "Zelda Ruiz", required = true)
     @ManyToOne
     @JoinColumn(name = "trainer" )
     @JsonBackReference (value="get-trainer")
     private Trainer trainer;
+
     @Schema(description = "Pokemon in the team", example = "Pikachu", required = true)
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "teams_Pokemon",

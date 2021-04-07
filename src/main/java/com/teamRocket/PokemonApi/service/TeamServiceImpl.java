@@ -8,6 +8,8 @@ import com.teamRocket.PokemonApi.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -38,7 +40,9 @@ public class TeamServiceImpl implements TeamService{
         Team team = teamRepository.findById(id)
                 .orElseThrow(() -> new TeamNotFoundException(id));
 
-        team.setPokemon(pokemon);
+        List<Pokemon> lstPokemon = new ArrayList<>();
+        lstPokemon.add(pokemon);
+        team.setPokemonTeam(lstPokemon);
         return teamRepository.save(team);
     }
 }
