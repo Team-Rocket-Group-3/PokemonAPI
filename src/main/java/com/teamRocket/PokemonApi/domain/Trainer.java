@@ -1,6 +1,5 @@
 package com.teamRocket.PokemonApi.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +17,7 @@ import java.util.List;
 @ToString
 @Entity(name = "trainer")
 public class Trainer {
+
     @Schema(description = "Trainer identifier", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,6 @@ public class Trainer {
 
     @Schema(description = "Register date", example = "04/07/2021")
     @Column
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registerDate;
 
     @Schema(description = "List of Pokemon teams", example = "Team aqua")
