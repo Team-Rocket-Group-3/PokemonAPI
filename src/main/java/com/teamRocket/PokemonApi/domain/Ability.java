@@ -1,12 +1,10 @@
 package com.teamRocket.PokemonApi.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 /**
@@ -44,4 +42,5 @@ public class Ability {
     @Schema(description = "Check if the ability is common or exclusive (true = common)", example = "true", required = true)
     @Column
     private boolean general;
+
 }
