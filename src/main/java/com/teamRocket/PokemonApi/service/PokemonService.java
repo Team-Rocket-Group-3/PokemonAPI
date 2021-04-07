@@ -1,7 +1,14 @@
-package com.teamRocket.PokemonApi.service;/**
-*
-* @author: veronica
-* @version Curso 2020-2021          
-*
-*/          public interface PokemonService {
+package com.teamRocket.PokemonApi.service;
+
+import com.teamRocket.PokemonApi.domain.Pokemon;
+
+import java.util.Set;
+
+/**
+ * @version Curso 2020-2021
+ * @author: veronica
+ */
+public interface PokemonService {
+
+    Set<Pokemon> findAll();
 }
