@@ -12,7 +12,6 @@ import java.util.Set;
  */
 @Repository
 public interface TrainerRepository extends CrudRepository<Trainer, Long> {
-
     Set<Trainer> findAll();
     Trainer findByName(String name);
 }

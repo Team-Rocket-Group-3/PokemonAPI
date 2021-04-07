@@ -9,7 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+import java.util.List;
+/**
+ * @version Curso 2020-2021
+ * @author: Guillermo
+ */
 @Data
 @Slf4j
 @NoArgsConstructor
@@ -29,11 +33,9 @@ public class Team {
     @Schema(description = "Trainer which has the team", example = "Zelda Ruiz", required = true)
     @ManyToOne
     @JoinColumn(name = "trainer" )
-    @JsonBackReference
+    @JsonBackReference (value="get-trainer")
     private Trainer trainer;
-    @Schema(description = "Pokemon inb the team", example = "Pikachu", required = true)
-    @ManyToOne
-    @JoinColumn(name = "pokemon" )
-    @JsonBackReference
-    private Pokemon pokemon;
+    @Schema(description = "Pokemon in the team", example = "Pikachu", required = true)
+    @OneToMany(mappedBy = "team",cascade = CascadeType.ALL)
+    private List<Pokemon> pokemonTeam;
 }

@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
-
+/**
+ * @version Curso 2020-2021
+ * @author: Guillermo
+ */
 @Data
 @NoArgsConstructor
 @Slf4j
