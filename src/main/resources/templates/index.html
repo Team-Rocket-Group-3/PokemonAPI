@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>Pokemon's list</h1>
+<ul th:each="pokemon : ${pokemons}">
+    <li><p th:text="${pokemon.name}"></p></li>
+    <li><p th:text="${pokemon.type}"></p></li>
+</ul>
+</body>
+</html>
