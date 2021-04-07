@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @version Curso 2020-2021
  * @author: veronica
@@ -20,6 +22,10 @@ public class TeamServiceImpl implements TeamService{
     @Autowired
     private TeamRepository teamRepository;
 
+    @Override
+    public Optional<Team> findById(long id) {
+        return teamRepository.findById(id);
+    }
 
     @Override
     public Team newTeam(String name, Trainer trainer) {
@@ -50,6 +56,5 @@ public class TeamServiceImpl implements TeamService{
         newTeam.setId(team.getId());
         return teamRepository.save(newTeam);
     }
-
 
 }

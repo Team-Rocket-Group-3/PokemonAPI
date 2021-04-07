@@ -88,4 +88,23 @@ public class TeamController {
         }
         return new ResponseEntity<>(team, HttpStatus.OK);
     }
+
+    @ExceptionHandler(TeamNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Response> handleTeamNotFoundException(TeamNotFoundException tnfe) {
+        Response response = Response.errorResponse(Response.ERROR_NOT_FOUND, tnfe.getMessage());
+        log.error(tnfe.getMessage(), tnfe);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Response> handleException(Exception exception) {
+        Response response = Response.errorResponse(500, "Unexpected error. Please, contact with the administrator");
+        log.error(exception.getMessage(), exception);
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
