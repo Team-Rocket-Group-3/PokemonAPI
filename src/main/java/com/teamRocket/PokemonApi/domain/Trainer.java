@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * @version Curso 2020-2021
+ * @author: Guillermo
+ */
 @Data
 @Slf4j
 @NoArgsConstructor
@@ -29,5 +32,4 @@ public class Trainer {
     @Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
     @OneToMany(mappedBy = "trainer",cascade = CascadeType.ALL)
     private List<Team> pokemonTeam;
-
 }

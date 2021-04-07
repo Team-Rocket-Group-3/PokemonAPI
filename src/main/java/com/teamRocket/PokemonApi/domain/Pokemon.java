@@ -8,8 +8,12 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
-
+/**
+ * @version Curso 2020-2021
+ * @author: Guillermo
+ */
 @Data
 @NoArgsConstructor
 @Slf4j
@@ -39,8 +43,12 @@ public class Pokemon {
     @Schema(description = "Game were the Pokemon appear for the first time", example = "Pokemon gold", required = true)
     @ManyToOne
     @JoinColumn(name = "game")
-    @JsonBackReference
     private Game game;
     @Schema(description = "URL with a image of that Pokemon", example = "https://www.pokeapi.com/pikachu.png", required = true)
     private String imageUrl;
+    @Schema(description = "Team of pokemon", example = "team aqua", required = true)
+    @ManyToMany(mappedBy = "pokemonTeam")
+    @JsonBackReference (value="get-team")
+    private List<Team> team;
+
 }
