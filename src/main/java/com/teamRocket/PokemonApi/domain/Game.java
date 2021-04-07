@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 /**
  * @version Curso 2020-2021
@@ -36,10 +37,10 @@ public class Game {
     @Column
     private LocalDate releaseDate;
 
-    /*@Schema(description = "List of Pokemon that belongs to the game", example = "Pikachu", required = true)
+    @Schema(description = "List of Pokemon that belongs to the game", example = "Pikachu", required = true)
     @OneToMany(mappedBy = "game",cascade = CascadeType.ALL)
     @JsonBackReference(value="pokemons")
-    private Set<Pokemon> pokemons;*/
+    private List<Pokemon> pokemons;
 
     @Schema(description = "URL with a image of the game", example = "https://www.pokeapi.com/pokemongold.png", required = true)
     @Column

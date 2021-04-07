@@ -31,7 +31,7 @@ public class Trainer {
     @Column
     private LocalDate registerDate;
 
-    /*@Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
+    @Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
     @OneToMany(mappedBy = "trainer",cascade = CascadeType.ALL)
-    private List<Team> pokemonTeam;*/
+    private List<Team> teams;
 }
