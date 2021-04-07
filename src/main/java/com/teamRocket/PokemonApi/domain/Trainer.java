@@ -32,5 +32,4 @@ public class Trainer {
     @Schema(description = "List of Pokemon teams", example = "Team aqua", required = true)
     @OneToMany(mappedBy = "trainer",cascade = CascadeType.ALL)
     private List<Team> pokemonTeam;
-
 }
