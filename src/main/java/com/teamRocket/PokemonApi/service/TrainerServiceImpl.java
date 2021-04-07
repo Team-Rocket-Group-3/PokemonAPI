@@ -19,8 +19,9 @@ public class TrainerServiceImpl implements TrainerService{
     }
 
     @Override
-    public Trainer addDlc(Trainer trainer) {
+    public Trainer addTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
     }
+
 
 }

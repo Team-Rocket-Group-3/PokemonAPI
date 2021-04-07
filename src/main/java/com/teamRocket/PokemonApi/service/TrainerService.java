@@ -1,6 +1,7 @@
 package com.teamRocket.PokemonApi.service;
 
 import com.teamRocket.PokemonApi.domain.Trainer;
+
 /**
  * @version Curso 2020-2021
  * @author: Guillermo
@@ -8,5 +9,7 @@ import com.teamRocket.PokemonApi.domain.Trainer;
 public interface TrainerService {
     Trainer findByName(String name);
 
-    Trainer addDlc(Trainer trainer);
+    Trainer addTrainer(Trainer trainer);
+
+
 }

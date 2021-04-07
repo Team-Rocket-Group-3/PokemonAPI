@@ -41,6 +41,7 @@ public class TrainerController {
         }
         return new ResponseEntity<>(trainer, HttpStatus.OK);
     }
+
     @Operation(summary = "Register a new trainer")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Trainer registered", content = @Content(schema = @Schema(implementation = Trainer.class)))
@@ -48,7 +49,8 @@ public class TrainerController {
     @PostMapping(value = "trainers",consumes = "application/json",produces = "application/json")
     public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer){
         log.info("init addTrainer");
-        Trainer addedTrainer = trainerService.addDlc(trainer);
+        Trainer addedTrainer = trainerService.addTrainer(trainer);
         return new ResponseEntity<>(addedTrainer, HttpStatus.CREATED);
     }
+
 }
