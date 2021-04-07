@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="StyleSheet" href="/css/index.css" type="text/css">
 </head>
 <body>
 <h1>Pokemon's list</h1>
 <ul th:each="pokemon : ${pokemons}">
-    <li><p th:text="${pokemon.name}"></p></li>
-    <li><p th:text="${pokemon.type}"></p></li>
+    <div id="row">
+        <div id="column">
+            <div class="card" style="width: 18rem;">
+                <img th:src="@{${'/images/' + pokemon.imageUrl}}" style="width: 5rem;" class="card-img-top" alt="Pokemon">
+                <div class="card-body">
+                    <h5 class="card-title"><p th:text="${pokemon.name}"></p></h5>
+                    <p class="type"><p th:text="${pokemon.type}"></p></p>
+                    <a href="game.html" target="_blank" class="btn-ver">Ver</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </ul>
 </body>
 </html>
