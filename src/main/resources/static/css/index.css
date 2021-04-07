@@ -1,0 +1,76 @@
+#column{
+    display: inline-block;
+    width: 100%;
+    margin-top: 50px;
+    object-position: center;
+}
+#row{
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.card img{
+    max-width:300px;
+    max-height: 600px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.card-body{
+    width: 250px;
+    max-height: 200px;
+}
+.card-title{
+    font-size: 17px;
+    text-align: center;
+    height: 10px;
+    margin-bottom: 10px;
+}
+.card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    max-height: 250px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 5px;
+}
+.card-img-top{
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+    min-height: 100%;
+}
+.type{
+    color: black;
+    font-size: 20px;
+    height: 20px;
+    margin-bottom: 20px;
+}
+.btn-ver{
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    outline: 0px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(175, 215, 248);
+    text-align: center;
+    cursor: pointer;
+    font-size: 19px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+.btn-ver:hover{
+    opacity: 0.7;
+    transition: all 0.7s;
+    text-transform: uppercase;
+    color: rgb(69, 107, 163);
+}
