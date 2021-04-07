@@ -8,7 +8,10 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
-
+/**
+ * @version Curso 2020-2021
+ * @author: Guillermo
+ */
 @Data
 @NoArgsConstructor
 @Slf4j
@@ -31,7 +34,7 @@ public class Ability {
     @Schema(description = "Pokemon which ahs this ability", example = "Pikachu", required = true)
     @ManyToOne
     @JoinColumn(name = "pokemon" )
-    @JsonBackReference
+    @JsonBackReference(value="trainer")
     private Pokemon pokemon;
     @Schema(description = "Check if the ability is common or exclusive (true = common)", example = "true", required = true)
     @Column
