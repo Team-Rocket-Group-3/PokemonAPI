@@ -1,11 +1,10 @@
 package com.teamRocket.PokemonApi.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -34,8 +33,8 @@ public class Team {
 
     @Schema(description = "Trainer which has the team", example = "Zelda Ruiz", required = true)
     @ManyToOne
-    @JoinColumn(name = "trainer" )
-    @JsonBackReference (value="get-trainer")
+    @JoinColumn(name = "trainer")
+    @JsonIgnore
     private Trainer trainer;
 
     @Schema(description = "Pokemon in the team", example = "Pikachu", required = true)
