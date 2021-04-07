@@ -5,6 +5,7 @@ import com.teamRocket.PokemonApi.domain.Team;
 import com.teamRocket.PokemonApi.domain.Trainer;
 import com.teamRocket.PokemonApi.exception.TeamNotFoundException;
 import com.teamRocket.PokemonApi.repository.TeamRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
  * @version Curso 2020-2021
  * @author: veronica
  */
+@Slf4j
 @Service
 public class TeamServiceImpl implements TeamService{
 
@@ -43,9 +45,11 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public Team modifyTeam(long id, Team newTeam) {
+    public Team modifyTeam(long id, Team newTeam) throws TeamNotFoundException {
         Team team = teamRepository.findById(id).orElseThrow(() -> new TeamNotFoundException(id));
         newTeam.setId(team.getId());
         return teamRepository.save(newTeam);
     }
+
+
 }
