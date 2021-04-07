@@ -36,6 +36,9 @@ public class Team {
     @JsonBackReference (value="get-trainer")
     private Trainer trainer;
     @Schema(description = "Pokemon in the team", example = "Pikachu", required = true)
-    @OneToMany(mappedBy = "team",cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "teams_Pokemon",
+            joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "pokemon_id", referencedColumnName = "id"))
     private List<Pokemon> pokemonTeam;
 }
