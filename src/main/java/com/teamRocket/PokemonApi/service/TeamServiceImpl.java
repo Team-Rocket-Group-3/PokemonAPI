@@ -8,8 +8,6 @@ import com.teamRocket.PokemonApi.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 /**
  * @version Curso 2020-2021
  * @author: veronica
@@ -20,10 +18,6 @@ public class TeamServiceImpl implements TeamService{
     @Autowired
     private TeamRepository teamRepository;
 
-    @Override
-    public Optional<Team> findById(long id) {
-        return teamRepository.findById(id);
-    }
 
     @Override
     public Team newTeam(String name, Trainer trainer) {
@@ -40,5 +34,18 @@ public class TeamServiceImpl implements TeamService{
 
         team.addPokemon(pokemon);
         return teamRepository.save(team);
+    }
+
+    @Override
+    public void deleteTeam(long id) throws TeamNotFoundException {
+        Team team = teamRepository.findById(id).orElseThrow(() -> new TeamNotFoundException(id));
+        teamRepository.delete(team);
+    }
+
+    @Override
+    public Team modifyTeam(long id, Team newTeam) {
+        Team team = teamRepository.findById(id).orElseThrow(() -> new TeamNotFoundException(id));
+        newTeam.setId(team.getId());
+        return teamRepository.save(newTeam);
     }
 }

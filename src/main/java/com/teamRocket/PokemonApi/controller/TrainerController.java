@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 public class TrainerController {
+
     @Autowired
     private TrainerService trainerService;
+
     @Operation(summary = "Get an trainer by name")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Trainer found", content = @Content(schema = @Schema(implementation = Trainer.class))),
