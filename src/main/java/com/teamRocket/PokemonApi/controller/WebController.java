@@ -28,7 +28,7 @@ public class WebController {
         return "index";
     }
 
-    @RequestMapping(value = "/abilities/{id}") // Web zone
+    @RequestMapping(value = "/{id}") // Web zone
     public String detail(@PathVariable Long id, Model model) {
         Pokemon pokemon = pokemonService.findById(id);
         model.addAttribute("abilities", pokemon.getAbilities());

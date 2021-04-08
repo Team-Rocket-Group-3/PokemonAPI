@@ -11,12 +11,12 @@
     <div id="row">
         <div id="column">
             <div class="card" style="width: 18rem;">
-                <img th:src="@{${'/images/' + pokemon.imageUrl}}" style="width: 5rem;" class="card-img-top" alt="Pokemon">
+                <img alt="Pokemon" class="card-img-top" style="width: 5rem;" th:src="@{${'/images/' + pokemon.image}}">
                 <div class="card-body">
                     <h5 class="card-title"><p th:text="${pokemon.name}"></p></h5>
                     <p class="type">Type:
                     <p th:text="${pokemon.type}"></p></p>
-                    <a class="btn-ver" href="abilities/" target="_blank" th:value="${pokemon.id}">Ver</a>
+                    <a class="btn-ver" target="_blank" th:href="${pokemon.id}">Ver</a>
                 </div>
             </div>
         </div>
