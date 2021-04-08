@@ -4,6 +4,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+logs/pokemon.log
+logs/pokemon-2021-04-07.0.log
 
 ### STS ###
 .apt_generated
