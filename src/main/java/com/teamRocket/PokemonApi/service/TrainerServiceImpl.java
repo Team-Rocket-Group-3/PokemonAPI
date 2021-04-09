@@ -35,6 +35,11 @@ public class TrainerServiceImpl implements TrainerService{
     }
 
     @Override
+    public Trainer findByNameAndPassword(String name, String password) {
+        return trainerRepository.findByNameAndPassword(name, password);
+    }
+
+    @Override
     public Trainer addTrainer(Trainer trainer) {
         return trainerRepository.save(trainer);
     }

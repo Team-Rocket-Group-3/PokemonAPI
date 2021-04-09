@@ -50,7 +50,7 @@ public class TrainerController {
     @Operation(summary = "Get an trainer by name")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Trainer found", content = @Content(schema = @Schema(implementation = Trainer.class))),
-            @ApiResponse(responseCode = "204", description = "The trainer does not exist", content = @Content(schema = @Schema(implementation = Response.class)))
+            @ApiResponse(responseCode = "404", description = "The trainer does not exist", content = @Content(schema = @Schema(implementation = Response.class)))
     })
     @GetMapping("trainers/{name}")
     public ResponseEntity<Trainer> getTrainer(@PathVariable String name){
@@ -61,6 +61,21 @@ public class TrainerController {
             log.error("trainer not found");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+        return new ResponseEntity<>(trainer, HttpStatus.OK);
+    }
+
+    @Operation(summary = "Get trainer by name and password") // Operation's description
+    @ApiResponses(value = { // Possibles Answers
+            @ApiResponse(responseCode = "200", description = "Trainer found",
+                    // Type of content:
+                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = Trainer.class)))),
+            @ApiResponse(responseCode = "404", description = "The trainer does not exist", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @GetMapping(value = "/login", produces = "application/json")
+    public ResponseEntity<Trainer> getTrainerLogin(@RequestParam(value = "name", defaultValue = "") String name, @RequestParam(value = "password", defaultValue = "") String password) {
+        log.info("start Login");
+        Trainer trainer = trainerService.findByNameAndPassword(name, password);
+        log.info("end login");
         return new ResponseEntity<>(trainer, HttpStatus.OK);
     }
 
