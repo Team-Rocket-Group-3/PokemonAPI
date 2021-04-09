@@ -20,6 +20,8 @@ public interface TrainerService {
     //Search a trainer by name
     Trainer findByName(String name);
 
+    Trainer findByNameAndPassword(String name, String password);
+
     //Add a trainer
     Trainer addTrainer(Trainer trainer);
 

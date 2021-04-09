@@ -16,4 +16,5 @@ public interface TrainerRepository extends CrudRepository<Trainer, Long> {
 
     List<Trainer> findAll();
     Trainer findByName(String name);
+    Trainer findByNameAndPassword(String name, String password);
 }

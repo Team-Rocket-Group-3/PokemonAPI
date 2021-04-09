@@ -27,6 +27,10 @@ public class Trainer {
     @Column
     private String name;
 
+    @Schema(description = "Trainer password", example = "123", required = true)
+    @Column
+    private String password;
+
     @Schema(description = "Register date", example = "04/07/2021")
     @Column
     private LocalDate registerDate;
