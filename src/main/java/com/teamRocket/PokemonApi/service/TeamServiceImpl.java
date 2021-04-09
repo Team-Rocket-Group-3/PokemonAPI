@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -55,6 +56,11 @@ public class TeamServiceImpl implements TeamService{
         Team team = teamRepository.findById(id).orElseThrow(() -> new TeamNotFoundException(id));
         newTeam.setId(team.getId());
         return teamRepository.save(newTeam);
+    }
+
+    @Override
+    public List<Team> findbyTrainer(long id) {
+        return teamRepository.findByTrainerId(id);
     }
 
 }
