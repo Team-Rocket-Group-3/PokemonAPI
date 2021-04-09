@@ -4,6 +4,7 @@ import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.domain.Team;
 import com.teamRocket.PokemonApi.domain.Trainer;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,5 +27,7 @@ public interface TeamService {
 
     //modify team
     Team modifyTeam(long id, Team newTeam);
+
+    List<Team> findbyTrainer(long id);
 }
 

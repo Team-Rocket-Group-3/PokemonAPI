@@ -11,4 +11,6 @@ import java.util.Set;
 public interface PokemonService {
 
     Set<Pokemon> findAll();
+
+    Pokemon findById(Long id);
 }

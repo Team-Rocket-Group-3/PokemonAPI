@@ -8,18 +8,13 @@
 <body>
 <h1>Pokemon's list</h1>
 <ul th:each="pokemon : ${pokemons}">
-    <div id="row">
-        <div id="column">
-            <div class="card" style="width: 18rem;">
-                <img th:src="@{${'/images/' + pokemon.imageUrl}}" style="width: 5rem;" class="card-img-top" alt="Pokemon">
-                <div class="card-body">
-                    <h5 class="card-title"><p th:text="${pokemon.name}"></p></h5>
-                    <p class="type"><p th:text="${pokemon.type}"></p></p>
-                    <a href="game.html" target="_blank" class="btn-ver">Ver</a>
-                </div>
-            </div>
-        </div>
-    </div>
+            <li class="card">
+                <img alt="Pokemon" class="card-img-top" style="width: 5rem;" th:src="@{${'/images/' + pokemon.image}}">
+                <h5 class="card-title"><p th:text="${pokemon.name}"></p></h5>
+                <p class="type">Type:
+                <p th:text="${pokemon.type}"></p></p>
+                <a class="btn-ver" target="_blank" th:href="${pokemon.id}">Ver</a>
+            </li>
 </ul>
 </body>
 </html>

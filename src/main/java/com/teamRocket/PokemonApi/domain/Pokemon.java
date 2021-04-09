@@ -5,11 +5,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 /**
  * @version Curso 2020-2021
  * @author: Guillermo
@@ -43,6 +41,9 @@ public class Pokemon {
     @Schema(description = "URL with a image of that Pokemon", example = "https://www.pokeapi.com/pikachu.png", required = true)
     private String imageUrl;
 
+    @Schema(description = "image of that Pokemon", example = "image.png", required = true)
+    private String image;
+
     @Schema(description = "Game were the Pokemon appear for the first time", example = "Pokemon gold", required = true)
     @ManyToOne
     @JoinColumn(name = "game")
@@ -50,7 +51,7 @@ public class Pokemon {
 
     @Schema(description = "List of Pokemon abilities", example = "fly", required = true)
     @Column
-    @OneToMany(mappedBy = "pokemon",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pokemon", cascade = CascadeType.ALL)
     private List<Ability> abilities;
 
     @Schema(description = "Team of pokemon", example = "team aqua", required = true)

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="/css/index.css" rel="StyleSheet" type="text/css">
+</head>
+<body>
+<h1>Pokemon's list</h1>
+<ul th:each="ability : ${abilities}">
+    <div id="row">
+        <div id="column">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><p th:text="${ability.name}"></p></h5>
+                    <p class="type">PP:
+                    <p th:text="${ability.pp}"></p></p>
+                    <p class="type">description:
+                    <p th:text="${ability.description}"></p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>
+</body>
+</html>

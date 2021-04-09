@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @version Curso 2020-2021
  * @author: veronica
@@ -57,7 +59,7 @@ public class TeamController {
 
     @Operation(summary = "detele team") // Descripción de la operación
     @ApiResponses(value = { // Possible answers
-            @ApiResponse(responseCode = "201", description = "Team was added", content = @Content(schema = @Schema(implementation = Team.class)))
+            @ApiResponse(responseCode = "201", description = "Team was deleted", content = @Content(schema = @Schema(implementation = Team.class)))
     })
     @DeleteMapping(value = "team/{id}")
     public ResponseEntity<Response> deleteTeam(@PathVariable long id) {
@@ -69,6 +71,18 @@ public class TeamController {
             return new ResponseEntity<>(Response.errorResponse(Response.NOT_FOUND, "Team not found"), HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "get Teams by trainer") // Descripción de la operación
+    @ApiResponses(value = { // Possible answers
+            @ApiResponse(responseCode = "201", description = "Teams found", content = @Content(schema = @Schema(implementation = Team.class)))
+    })
+    @GetMapping(value = "team/{id}")
+    public ResponseEntity<List<Team>> teamsBytrainer(@PathVariable long id) {
+        log.info(" init teamByTrainer");
+        List<Team> teams = teamService.findbyTrainer(id);
+        log.info("End teamByTrainer");
+        return new ResponseEntity<>(teams, HttpStatus.OK);
     }
 
     @Operation(summary = "Modify a team")
