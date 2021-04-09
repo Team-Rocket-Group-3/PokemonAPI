@@ -51,7 +51,7 @@ public class Pokemon {
 
     @Schema(description = "List of Pokemon abilities", example = "fly", required = true)
     @Column
-    @OneToMany(mappedBy = "pokemon", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pokemon")
     private List<Ability> abilities;
 
     @Schema(description = "Team of pokemon", example = "team aqua", required = true)

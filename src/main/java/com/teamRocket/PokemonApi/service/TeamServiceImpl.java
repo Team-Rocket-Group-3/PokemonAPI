@@ -2,7 +2,6 @@ package com.teamRocket.PokemonApi.service;
 
 import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.domain.Team;
-import com.teamRocket.PokemonApi.domain.Trainer;
 import com.teamRocket.PokemonApi.exception.TeamNotFoundException;
 import com.teamRocket.PokemonApi.repository.TeamRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +28,7 @@ public class TeamServiceImpl implements TeamService{
     }
 
     @Override
-    public Team newTeam(String name, Trainer trainer) {
-        Team team = new Team();
-        team.setName(name);
-        team.setTrainer(trainer);
+    public Team newTeam(Team team) {
         return teamRepository.save(team);
     }
 

@@ -38,7 +38,7 @@ public class Team {
     private Trainer trainer;
 
     @Schema(description = "Pokemon in the team", example = "Pikachu", required = true)
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "teams_Pokemon",
             joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "pokemon_id", referencedColumnName = "id"))

@@ -36,6 +36,6 @@ public class Trainer {
     private LocalDate registerDate;
 
     @Schema(description = "List of Pokemon teams", example = "Team aqua")
-    @OneToMany(mappedBy = "trainer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "trainer")
     private List<Team> teams;
 }

@@ -2,7 +2,6 @@ package com.teamRocket.PokemonApi.controller;
 
 import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.domain.Team;
-import com.teamRocket.PokemonApi.domain.Trainer;
 import com.teamRocket.PokemonApi.exception.TeamNotFoundException;
 import com.teamRocket.PokemonApi.service.TeamService;
 import com.teamRocket.PokemonApi.support.Response;
@@ -37,11 +36,11 @@ public class TeamController {
             @ApiResponse(responseCode = "201", description = "Team was added", content = @Content(schema = @Schema(implementation = Team.class)))
     })
     @PostMapping(value = "/team", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Team> newTeam(@RequestBody String name, @RequestBody Trainer trainer) {
+    public ResponseEntity<Team> newTeam(@RequestBody Team team) {
         log.info("Start newTeam");
-        Team team = teamService.newTeam(name, trainer);
+        Team team1 = teamService.newTeam(team);
         log.info("End newTeam");
-        return new ResponseEntity<>(team, HttpStatus.CREATED);
+        return new ResponseEntity<>(team1, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Save a Pokemon into a team") // Operation's description
