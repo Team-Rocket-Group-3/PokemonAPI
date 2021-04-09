@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <link rel="StyleSheet" href="/css/index.css" type="text/css">
+    <link href="/css/index.css" rel="StyleSheet" type="text/css">
 </head>
 <body>
 <h1>Pokemon's list</h1>
-<ul th:each="pokemon : ${pokemons}">
-    <div id="row">
-        <div id="column">
-            <div class="card" style="width: 18rem;">
-                <img alt="Pokemon" class="card-img-top" style="width: 5rem;" th:src="@{${'/images/' + pokemon.image}}">
-                <div class="card-body">
-                    <h5 class="card-title"><p th:text="${pokemon.name}"></p></h5>
-                    <p class="type">Type:
-                    <p th:text="${pokemon.type}"></p></p>
-                    <a class="btn-ver" target="_blank" th:href="${pokemon.id}">Ver</a>
-                </div>
-            </div>
-        </div>
+<div class="grid-container">
+    <div th:each="pokemon : ${pokemons}">
+        <img th:src="@{${'/images/' + pokemon.image}}" alt="Pokemon"/>
+        <h5><p th:text="${pokemon.name}"></p></h5>
+        <p class="type" th:text="${pokemon.type}"></p>
+        <a target="_blank" th:href="${pokemon.id}">Details</a>
     </div>
-</ul>
+</div>
+<div id="footer">
+    <a title="GitHub" href="https://github.com/Team-Rocket-Group-3" target="_blank">
+        <img src="/images/github.png" alt="GitHub"></a>
+    <div class="copyright">©2021 PokeTeams</div>
+</div>
 </body>
 </html>
