@@ -36,7 +36,11 @@ public class TrainerServiceImpl implements TrainerService{
 
     @Override
     public Trainer findByNameAndPassword(String name, String password) {
-        return trainerRepository.findByNameAndPassword(name, password);
+        Trainer trainer = trainerRepository.findByNameAndPassword(name, password);
+        if(trainer == null)
+            throw new TrainerNotFoundException();
+
+        return trainer;
     }
 
     @Override
