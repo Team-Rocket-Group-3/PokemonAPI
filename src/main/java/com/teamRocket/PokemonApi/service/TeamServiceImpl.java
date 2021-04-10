@@ -2,8 +2,10 @@ package com.teamRocket.PokemonApi.service;
 
 import com.teamRocket.PokemonApi.domain.Pokemon;
 import com.teamRocket.PokemonApi.domain.Team;
+import com.teamRocket.PokemonApi.domain.Trainer;
 import com.teamRocket.PokemonApi.exception.TeamNotFoundException;
 import com.teamRocket.PokemonApi.repository.TeamRepository;
+import com.teamRocket.PokemonApi.repository.TrainerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +24,18 @@ public class TeamServiceImpl implements TeamService{
     @Autowired
     private TeamRepository teamRepository;
 
+    @Autowired
+    private TrainerRepository trainerRepository;
+
     @Override
     public Optional<Team> findById(long id) {
         return teamRepository.findById(id);
     }
 
     @Override
-    public Team newTeam(Team team) {
+    public Team newTeam(long trainerId, Team team) {
+        Optional<Trainer> trainer = trainerRepository.findById(trainerId);
+        team.setTrainer(trainer.get());
         return teamRepository.save(team);
     }
 

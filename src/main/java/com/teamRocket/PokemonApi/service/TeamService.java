@@ -16,7 +16,7 @@ public interface TeamService {
     Optional<Team> findById(long id);
 
     // Creates a new Team
-    Team newTeam(Team team);
+    Team newTeam(long trainerId, Team team);
 
     // Add a Pokemon into team
     Team addPokemon(long id, Pokemon pokemon);

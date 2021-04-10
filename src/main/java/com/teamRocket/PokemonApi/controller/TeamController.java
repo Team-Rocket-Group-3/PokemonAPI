@@ -35,10 +35,10 @@ public class TeamController {
     @ApiResponses(value = { // Possible answers
             @ApiResponse(responseCode = "201", description = "Team was added", content = @Content(schema = @Schema(implementation = Team.class)))
     })
-    @PostMapping(value = "/teams", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Team> newTeam(@RequestBody Team team) {
+    @PostMapping(value = "trainers/{trainerId}/teams", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Team> newTeam(@PathVariable long trainerId, @RequestBody Team team) {
         log.info("Start newTeam");
-        Team team1 = teamService.newTeam(team);
+        Team team1 = teamService.newTeam(trainerId, team);
         log.info("End newTeam");
         return new ResponseEntity<>(team1, HttpStatus.CREATED);
     }
@@ -48,7 +48,7 @@ public class TeamController {
             @ApiResponse(responseCode = "201", description = "Pokemon was added", content = @Content(schema = @Schema(implementation = Team.class))),
             @ApiResponse(responseCode = "404", description = "Team not found", content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PostMapping(value = "/teams/{id}", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/teams/{id}/pokemons", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Team> addPokemon(@PathVariable long id, @RequestBody Pokemon pokemon) {
         log.info("Start addPokemon");
         Team team = teamService.addPokemon(id, pokemon);
