@@ -12,7 +12,7 @@
         <img th:src="@{${'/images/' + pokemon.image}}" alt="Pokemon"/>
         <h5><p th:text="${pokemon.name}"></p></h5>
         <p class="type" th:text="${pokemon.type}"></p>
-        <a target="_blank" th:href="${pokemon.id}">Details</a>
+        <a th:href="${pokemon.id}">Details</a>
     </div>
 </div>
 <div id="footer">
