@@ -37,7 +37,7 @@ public class PokemonController {
                     // Type of content:
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = Pokemon.class)))),
     })
-    @GetMapping(value = "/pokemon", produces = "application/json")
+    @GetMapping(value = "/pokemons", produces = "application/json")
     public ResponseEntity<Set<Pokemon>> getPokemon() {
         log.info("Start getPokemon");
         Set<Pokemon> pokemon = pokemonService.findAll();

@@ -1,7 +1,9 @@
 package com.teamRocket.PokemonApi.controller;
 
+import com.teamRocket.PokemonApi.domain.Team;
 import com.teamRocket.PokemonApi.domain.Trainer;
 import com.teamRocket.PokemonApi.exception.TrainerNotFoundException;
+import com.teamRocket.PokemonApi.service.TeamService;
 import com.teamRocket.PokemonApi.service.TrainerService;
 import com.teamRocket.PokemonApi.support.Response;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +35,9 @@ public class TrainerController {
     @Autowired
     private TrainerService trainerService;
 
+    @Autowired
+    private TeamService teamService;
+
     @Operation(summary = "Get all trainers") // Operation's description
     @ApiResponses(value = { // Possibles Answers
             @ApiResponse(responseCode = "200", description = "Trainer's list",
@@ -46,6 +51,19 @@ public class TrainerController {
         log.info("End getTrainers");
         return new ResponseEntity<>(trainers, HttpStatus.OK);
     }
+
+    @Operation(summary = "get Teams by trainer") // Descripción de la operación
+    @ApiResponses(value = { // Possible answers
+            @ApiResponse(responseCode = "201", description = "Teams found", content = @Content(schema = @Schema(implementation = Team.class)))
+    })
+    @GetMapping(value = "trainers/{id}/teams")
+    public ResponseEntity<List<Team>> teamsBytrainer(@PathVariable long id) {
+        log.info(" init teamByTrainer");
+        List<Team> teams = teamService.findbyTrainer(id);
+        log.info("End teamByTrainer");
+        return new ResponseEntity<>(teams, HttpStatus.OK);
+    }
+
 
     @Operation(summary = "Get an trainer by name")
     @ApiResponses(value = {

@@ -35,7 +35,7 @@ public class TeamController {
     @ApiResponses(value = { // Possible answers
             @ApiResponse(responseCode = "201", description = "Team was added", content = @Content(schema = @Schema(implementation = Team.class)))
     })
-    @PostMapping(value = "/team", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/teams", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Team> newTeam(@RequestBody Team team) {
         log.info("Start newTeam");
         Team team1 = teamService.newTeam(team);
@@ -48,7 +48,7 @@ public class TeamController {
             @ApiResponse(responseCode = "201", description = "Pokemon was added", content = @Content(schema = @Schema(implementation = Team.class))),
             @ApiResponse(responseCode = "404", description = "Team not found", content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PostMapping(value = "/team/{id}", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/teams/{id}", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Team> addPokemon(@PathVariable long id, @RequestBody Pokemon pokemon) {
         log.info("Start addPokemon");
         Team team = teamService.addPokemon(id, pokemon);
@@ -56,11 +56,11 @@ public class TeamController {
         return new ResponseEntity<>(team, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "detele team") // Descripción de la operación
+    @Operation(summary = "delete team") // Descripción de la operación
     @ApiResponses(value = { // Possible answers
             @ApiResponse(responseCode = "201", description = "Team was deleted", content = @Content(schema = @Schema(implementation = Team.class)))
     })
-    @DeleteMapping(value = "team/{id}")
+    @DeleteMapping(value = "teams/{id}")
     public ResponseEntity<Response> deleteTeam(@PathVariable long id) {
         log.info("init delete team");
         try {
@@ -72,24 +72,12 @@ public class TeamController {
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 
-    @Operation(summary = "get Teams by trainer") // Descripción de la operación
-    @ApiResponses(value = { // Possible answers
-            @ApiResponse(responseCode = "201", description = "Teams found", content = @Content(schema = @Schema(implementation = Team.class)))
-    })
-    @GetMapping(value = "team/{id}")
-    public ResponseEntity<List<Team>> teamsBytrainer(@PathVariable long id) {
-        log.info(" init teamByTrainer");
-        List<Team> teams = teamService.findbyTrainer(id);
-        log.info("End teamByTrainer");
-        return new ResponseEntity<>(teams, HttpStatus.OK);
-    }
-
     @Operation(summary = "Modify a team")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Team modified", content = @Content(schema = @Schema(implementation = Team.class))),
             @ApiResponse(responseCode = "204", description = "The team does not exist", content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PutMapping("/team/{id}")
+    @PutMapping("/teams/{id}")
     public ResponseEntity<Team> modifyTeam(@PathVariable long id, @RequestBody Team newTeam) {
         log.info("init modifyTeam");
         Team team;
